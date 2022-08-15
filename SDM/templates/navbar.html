@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<header>
+    <div class="navlogo">
+        <img src="{% static 'images/SDMlogo.svg' %}" alt="SDM logo" />
+    </div>
+    <div class="hamburger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </div>
+    <nav class="nav-bar">
+        <ul>
+            <li><a class="nav-btn" href="{% url 'base:home' %}">Home</a></li>
+            <li><a class="nav-btn" href="{% url 'base:school_registered' %}">Schools</a></li>
+            <li><a class="nav-btn" href="{% url 'base:contact_us' %}">Contact Us</a></li>
+            <li><a class="register" href="{% url 'accounts:select_reg' %}">Register</a></li>
+            {%if request.user.is_authenticated%}
+            <li><a class="login" href="{% url 'accounts:logout' %}">Logout</a></li>
+            {% else %}
+            <li><a class="login" href="{% url 'accounts:login' %}">Login</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
