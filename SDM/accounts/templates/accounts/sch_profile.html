@@ -1,0 +1,101 @@
+{% extends 'main_index.html' %}
+{% load static %}
+{% block content %}
+<!-- BOOTSTRAP STYLE ENDS -->
+
+<!-- CUSTOM STYLE BEGINS -->
+
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
+
+  body {
+    background-image: url(../../../static/images/unsplash_7JX0-bfiuxQ.svg);
+    font-family: "Playfair Display", serif;
+  }
+
+  .cs8-header {
+    font-weight: 600;
+    font-size: 2em;
+  }
+
+  .cs8-para {
+    font-size: 1em;
+    font-weight: 400;
+  }
+
+  .cs8-img {
+    width: 2em;
+  }
+
+  .cs8-anchor {
+    color: black;
+    text-decoration: none;
+  }
+
+  .cs8-btt-primary {
+    background-color: #77AED0;
+    color: black
+  }
+
+  .cs8-btt-primary:hover {
+    background-color: #6E599B;
+  }
+
+</style>
+<main class="container-md after_login">
+  <div class="row mt-5 text-center">
+    <h3 class="cs8-header">Update Profile</h3>
+  </div>
+  <div class="row my-3 justify-content-center">
+    <div class="col-sm-8">
+      <div class="row">
+        <div class="col-9">
+          <h3>Details of School</h3>
+          <p class="cs8-para">Kindly provide school details below</p>
+        </div>
+      </div>
+      <div class="row">
+        <form action="">
+          <div class="row mt-4">
+            <div class="col">
+              <label for="fname" class="form-label">Full Name of school</label>
+              <input type="text" class="form-control form-control-lg" id="fname" placeholder="full name" />
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col">
+              <label for="email" class="form-label">Email Address</label>
+              <input type="email" class="form-control form-control-lg" id="email" placeholder="e.g. example@mail.com" />
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col">
+              <label for="address" class="form-label">Address Of School</label>
+              <input type="text" class="form-control form-control-lg" id="address" placeholder="Address" />
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col">
+              <label for="reg" class="form-label">Phone Number</label>
+              <input type="tel" class="form-control form-control-lg" id="address" placeholder="e.g. 08000000000" />
+            </div>
+          </div>
+          <div class="row mt-4">
+            <div class="col">
+              <label for="reg" class="form-label">School Registration Number</label>
+              <input type="number" class="form-control form-control-lg" id="address" placeholder="e.g. SMS/ad/2204" />
+            </div>
+          </div>
+          <div class="row my-5 justify-content-center">
+            <div class="col-md text-center">
+              <button type="submit" class="btn cs8-btt-primary btn-lg mx-auto px-sm-5 py-sm-2">
+                Submit
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
