@@ -1,0 +1,154 @@
+{% extends 'main_index.html' %}
+{% load static %}
+{% block content %}
+<style>
+  .cs2-para {
+    font-size: 1em;
+  }
+
+  .cs2-header {
+    font-size: 2.2em;
+  }
+
+  .cs2-box {
+    background-color: #D9D9D9;
+    border-radius: 0.75em;
+  }
+
+  .cs2-text {
+    color: #000000;
+    text-decoration: none;
+  }
+
+  .cs2-icon-1 {
+    width: 2em;
+  }
+
+  .cs2-icon-2 {
+    width: 20em;
+  }
+
+  .cs2-img {
+    height: 8em;
+    width: 10em;
+  }
+
+  .cs2-btt-secondary {
+    background-color: #ABA8A8;
+    border-radius: 10px;
+    color: #1E1A1A;
+    font-size: 16px;
+  }
+
+  .cs2-btt-success {
+    background-color: #56CC42;
+    border-radius: 10px;
+    color: #1E1A1A;
+    font-size: 16px;
+  }
+
+  .cs2-btt-danger {
+    background-color: #FFA398;
+    border-radius: 10px;
+    color: #1E1A1A;
+    font-size: 16px;
+  }
+
+</style>
+
+<main id="sch_contend" class='after_login'>
+  <div class="container-md">
+    <div class="row">
+      <div class="col my-4">
+        <h2 class="cs2-header">Contended Posts</h2>
+        <p class="cs2-para">The posts below were contended by guardians of debtors</p>
+      </div>
+      <div class="col-sm-5">
+        <form action="">
+          <label for="Search" class="form-label"></label>
+          <input type="search" name="Search" id="Search" size="20px" class="form-control rounded"
+            placeholder="Search" />
+        </form>
+      </div>
+    </div>
+    <div class="row ps-lg-3">
+      <div class="col-sm mx-lg-3">
+        <div class="row">
+          <div class="col-sm-9 mt-3">
+            <p class="cs2-para"><b>Sort by:</b> Recently flagged</p>
+          </div>
+          <div class="col-sm-3 mt-3">
+            <a href="#" class="custom-text">
+              Delete all
+              <img src="../../../static/images/trash.svg" alt="" class="img-fluid">
+            </a>
+          </div>
+        </div>
+
+        {% for contend in contends %}
+        {% if user.id == posts.school.id %}
+        <div class="row my-3 px-4 py-4">
+          <div class="col-sm-9 cs2-box">
+            <div class="row">
+              <div class="col-2 col-md-2 mt-4">
+                <img src="../../../static/images/Ellipse 3 (1).svg" alt="" class="img-fluid cs2-img" />
+              </div>
+              <div class="col-5 col-md-5 mt-4">
+                <p class="cs2-para"><b>Name</b>: {{student.name}} </p>
+                <p class="cs2-para"><b>Gender</b>: {{student.gender}} </p>
+                <p class="cs2-para"><b>Unpaid Debt</b>: {{student.debt_incured}} </p>
+                <p class="cs2-para"><b>Interest Incurred</b>: {{student.interest_incured}} </p>
+              </div>
+              <div class="col-4 col-md-4 mt-4">
+                <p class="cs2-para"><b>Student ID</b>: {{student.student_id}}</p>
+                <p class="cs2-para"><b>Class before of withdrawal</b>: {{student.class_of_withdrawal}}</p>
+                <p class="cs2-para"><b>Date of withdrawal</b>: {{student.date_of_withdrawal|date:"d-m-y"}} </p>
+                <p class="cs2-para"><b>Date contended</b>: {{contends.created_at}} </p>
+              </div>
+              <div class="col-1 col-md-1 mt-4">
+                <img src="../../../static/images/Group 23.svg" alt="" class="img-fluid cs2-icon-2" />
+              </div>
+            </div>
+            <div class="row mb-4">
+              <div class="col-6 mx-auto">
+                <div class="row">
+                  <div class="col-10">
+                    <form action="">
+                      <label for="Search" class="form-label"></label>
+                      <input type="text" name="Search" id="Search" size="20px"
+                        class="form-control form-control-sm rounded" placeholder="{{ variable }}" />
+                    </form>
+                  </div>
+                  <div class="col-2 mt-4">
+                    <a href="#">
+                      <img src="../../../static/images/Vector.svg" alt="" class="img-fluid cs2-icon-1">
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row my-4">
+              <div class="col text-center">
+                <a href="#" class="mx-3">
+                  <button type="button" class="btn btn-sm cs2-btt-secondary">In View</button>
+                </a>
+                <a href="#" class="mx-3">
+                  <button type="button" class="btn btn-sm cs2-btt-success">Resolved</button>
+                </a>
+                <a href="#" class="mx-3 mt-3">
+                  <button type="button" class="btn btn-sm cs2-btt-danger">Unresolved</button>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3">
+        {{endif}}
+        {{endfor}}
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

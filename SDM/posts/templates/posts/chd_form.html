@@ -1,0 +1,90 @@
+{% extends 'main_index.html' %}
+{% load static %}
+{% block content %}
+<style>
+  @import url("https://fonts.googleapis.com/css2?family=Playfair+Display&display=swap");
+
+  .cs1-header {
+    font-size: 2em;
+  }
+
+  .cs1-para {
+    font-size: 1.2em;
+  }
+
+  .cs1-btt-primary {
+    background-color: #77AED0;
+    color: #1E1A1A;
+  }
+
+</style>
+
+<main class="container-md after_login">
+  <div class="row text-center">
+    <h1 class="cs1-header">Add Child</h1>
+    <p class="cs1-para">Fill in the details of the ward bellow</p>
+  </div>
+  <div class="row mt-3 justify-content-center">
+    <div class="col-sm-8">
+
+      <form action="" method="post">
+        {% csrf_token %}
+        <div class="col">
+          <label for="fname" class="form-label">Full Name</label>
+          <input type="text" class="form-control form-control-lg" id="fname" name='name' placeholder="Your Full Name" />
+        </div>
+        <div class="row">
+          <div class="col-md mt-3 mt-sm-4">
+            <label for="gender" class="form-label">Gender</label>
+            <select class="form-select form-select-lg" aria-label="Default select example" name='gender'>
+              <option selected>Select</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+          </div>
+          <div class="col-md mt-3 mt-sm-4">
+            <label for="fname" class="form-label">School Name</label>
+            <input class="form-select form-select-lg" type=" text" class="form-control form-control-lg" id="fname"
+              name='school' placeholder="Your Full Name" />
+          </div>
+          <!-- <div class="col-md mt-3 mt-sm-4">
+            <label for="school" class="form-label">Name of school</label>
+            <select class="form-select form-select-lg" aria-label="Default select example" name='school'>
+              <option selected>Select</option>
+              <option value="Scarlet Montessori School">Scarlet Montessori School</option>
+              <option value="Top Line High School">Top Line High School</option>
+              <option value="Bereton Techical College">Bereton Techical College</option>
+            </select>
+          </div> -->
+        </div>
+        <div class="row">
+          <div class="col-md mt-3 mt-sm-4">
+            <label for="stdid" class="form-label">Student ID</label>
+            <input type="number" class="form-control form-control-lg" id="stdid" placeholder="Your Student ID"
+              name='student_id' />
+          </div>
+          <div class="col-md mt-3 mt-sm-4">
+            <label for="relation" class="form-label">Relationship With Child</label>
+            <select class="form-select form-select-lg" aria-label="Default select example" name='relationship'>
+              <option selected>Select</option>
+              <option value="Mother">Mother</option>
+              <option value="Father">Father</option>
+              <option value="Sibling">Sibling</option>
+              <option value="Uncle">Uncle</option>
+              <option value="Aunt">Aunt</option>
+              <option value="Friend">Friend</option>
+            </select>
+          </div>
+        </div>
+        <div class="row mt-5 justify-content-center">
+          <div class="col-md text-center">
+            <button type="submit" class="btn cs1-btt-primary btn-lg mx-auto px-5 py-2">
+              Add
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</main>
+{% endblock %}

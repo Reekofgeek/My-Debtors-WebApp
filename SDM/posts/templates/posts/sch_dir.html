@@ -1,0 +1,152 @@
+{% extends 'main_index.html' %}
+{% load static %}
+{% block content %}
+<style>
+    .cs-img {
+        height: 2em;
+    }
+
+    .cs-student-box {
+        background-color: #DBCBEA;
+        border: 1px solid #DBCBEA;
+        border-top-left-radius: 0.6em;
+        border-top-right-radius: 0.6em;
+    }
+
+    .cs-student-box-2 {
+        background-color: #DBCBEA;
+        border: 1px solid #DBCBEA;
+        border-bottom-left-radius: 0.6em;
+        border-bottom-right-radius: 0.6em;
+    }
+
+    .cs-para {
+        font-size: 0.9em;
+        margin: 0.6em;
+    }
+
+    .cs-para-2 {
+        font-size: 0.7em;
+        margin: 0.4em;
+    }
+
+    .cs-anchor {
+        color: #141414;
+        text-decoration: none;
+    }
+
+</style>
+<main id="sch_dir" class='after_login'>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm mt-4">
+                <h2>Directory</h2>
+                <p>Below is the directory of your debtors</p>
+            </div>
+            <div class="col-sm-4">
+                <form action="">
+                    <label for="Search" class="form-label"></label>
+                    <input type="search" name="Search" id="Search" size="20px" class="form-control rounded"
+                        placeholder="Search" />
+                </form>
+            </div>
+        </div>
+        <div class="row my-3">
+            <div class="col-3">
+                <p><b>Sort by: </b>Recently added</p>
+            </div>
+            <div class="col-3">
+
+            </div>
+            <div class="col-2">
+                <p>
+                    <a href="{% url 'posts:add_debt' %}" class="cs-anchor">
+                        Add to List
+                        <img src="../../../static/images/add-circle- plus.svg" alt="plus symbol"
+                            class="img-fluid cs-img">
+                    </a>
+                </p>
+            </div>
+            <div class="col-2">
+                <p>
+                    <a href="#" class="cs-anchor">
+                        Delete all
+                        <img src="../../../static/images/trash.svg" alt="trash symbol" class="img-fluid cs-img">
+                    </a>
+                </p>
+            </div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-2 gx-2 gy-4 my-2">
+            {% for post in posts %}
+            <div class="col px-4">
+                <div class="row pt-2 cs-student-box">
+                    <div class="col-2 mt-2">
+                        <img src="../../../static/images/Ellipse 3- african-boy.svg" alt="picture of a boy"
+                            class="img-fluid" />
+                    </div>
+                    <div class="col-5">
+                        <p class="cs-para"><b>Name</b>: {{post.student.name}}</p>
+                        <p class="cs-para"><b>Gender</b>: {{post.student.gender}}</p>
+                        <p class="cs-para"><b>Unpaid Debt</b>: {{post.student.debt_incured}}</p>
+                        <p class="cs-para"><b>Interest Incurred</b>: {{post.student.interest_incured}}%</p>
+                    </div>
+                    <div class="col-4">
+                        <p class="cs-para"><b>Student ID</b>: SMS{{post.student.student_id}}</p>
+                        <p class="cs-para"><b>Withdrawal Class</b>: {{post.student.class_of_withdrawal}}</p>
+                        <p class="cs-para"><b>Withdrawal Date</b>: {{post.student.date_of_withdrawal|date:"d-m-y"}}</p>
+                    </div>
+                    <div class="col-1">
+                        <a href="#">
+                            <img src="../../../static/images/add-circle.svg" alt="cancel button" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+                <div class="row mb-2 cs-student-box-2">
+                    <div class="col-6">
+
+                    </div>
+                    <div class="col-3">
+                        <div class="d-flex justify-content-end">
+                            <span>
+                                <a href="#" class="cs-anchor">
+                                    <img src="../../../static/images/messages-3.svg" alt="message picture"
+                                        class="img-fluid cs-img">
+                                </a>
+                            </span>
+                            <span>
+                                <a href="{% url 'posts:sch_comment' post.id %}" class="cs-anchor">
+                                    <p class="cs-para-2">{{post.comments_set.count}}<br> Comments</p>
+                                </a>
+                            </span>
+                        </div>
+
+                    </div>
+                    <div class="col-3">
+                        <div class="d-flex justify-content-end">
+                            <span>
+                                <a href="#" class="cs-anchor">
+                                    <img src="../../../static/images/Vectorflag.svg" alt="flag post"
+                                        class="img-fluid cs-img">
+                                </a>
+                            </span>
+                            <span>
+                                <a href="#" class="cs-anchor">
+                                    <p class="cs-para-2">Contended</p>
+                                </a>
+                            </span>
+                        </div>
+                        <div class="row">
+                            <p class="cs-para-2">
+                                <a href="#" class="cs-anchor">
+                                    Reason For Contend
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+{% endblock %}
